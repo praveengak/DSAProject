@@ -11,32 +11,35 @@ public class ArmStrongNumber {
     153
     (1^3)+(5^3)+(3^3) = 1+125+27 = 153
      */
-    public void toFindArmStrongNumber(int num){
+    public void toFindArmStrongNumber(int num) {
 
         String str = String.valueOf(num);
-        int count = (int)(str.length());
+        int count = str.length();
+        int x = num;
         int quotient;
         int remainder;
-        int sum=0;
-        do{
-        quotient = num/10;
-        remainder = num%10;
-        if(quotient>10){
-        sum = (int)(Math.pow(remainder, count)+sum);}
-        else{sum=(int)(Math.pow(quotient, count)+sum);}
-        }while (remainder>0);
+        int sum = 0;
+        do {
+            quotient = x / 10;
+            remainder = x % 10;
+            x=quotient;
+            if (quotient >=1 || quotient ==0) {
+                sum = (int) (Math.pow(remainder, count) + sum);
+            }
+        } while (remainder > 0);
 
-        if (sum==num){
-            System.out.println(num+" is a ArmStrongNumbet");
+        if (sum == num) {
+            System.out.println(num + " is a ArmStrongNumber");
+        } else {
+            System.out.println(num + " is not a ArmStrongNumber");
         }
-        else{System.out.println(num+" is not a ArmStrongNumbet");}
 
 
     }
 
     public static void main(String[] args) {
-    int num = 153;
-    ArmStrongNumber armStrongNumber = new ArmStrongNumber();
-    armStrongNumber.toFindArmStrongNumber(num);
+        int num = 151;
+        ArmStrongNumber armStrongNumber = new ArmStrongNumber();
+        armStrongNumber.toFindArmStrongNumber(num);
     }
 }
